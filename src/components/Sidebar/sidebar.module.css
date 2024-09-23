@@ -1,8 +1,8 @@
 .sidebarContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: inherit;
+    width: 18vw;
+    height: 100vh;
     padding: 10% 5%;
 }
 
@@ -17,5 +17,6 @@
 }
 
 .iconeLista {
+    margin-right: 1vh;
     color: #565656;
 }
