@@ -1,0 +1,22 @@
+.sidebarContainer {
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    height: 100vh;
+    padding: 10% 5%;
+}
+
+.lista {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400 !important;
+}
+
+.campoBusca {
+    width: 100%;
+    margin-bottom: 1vw !important;
+}
+
+.iconeLista {
+    margin-right: 1vh;
+    color: #565656;
+}
