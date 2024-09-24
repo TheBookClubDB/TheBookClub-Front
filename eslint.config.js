@@ -22,23 +22,23 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
-        'warn',
+        'error',
         { allowConstantExport: true },
       ],
       'no-unused-vars': [
-        'warn',
+        'error',
         {vars: 'all', args: 'after-used', ignoreRestSiblings: false }
       ],
-      'unused-imports/no-unused-imports': 'warn',
-      'unused-imports/no-unused-vars': ['warn',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': ['error',
         {vars: "all", varsIgnorePattern: '^_'}
       ],
-      "indent": ["warn", 2],
+      "indent": ["error", 2],
       "space-before-function-paren": ["error", "never"],
       "quotes": ["warn", "single"],
-      "no-useless-escape": "warn",
+      "no-useless-escape": "error",
       'no-console': [
-        'warn',
+        'error',
         { allow: ['warn', 'error']}
       ],
 
