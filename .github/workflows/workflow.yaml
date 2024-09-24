@@ -20,6 +20,7 @@ on:
       - 'feat/**'
       - 'bugfix/**'
       - 'hotfix/**'
+      - 'fix/**'
 
 jobs:
 
