@@ -56,7 +56,7 @@ jobs:
       run: npm run build
 
   lint:
-    name: Lint 
+    name: test
     runs-on: ubuntu-latest
     needs: build
 
