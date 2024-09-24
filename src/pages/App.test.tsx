@@ -3,10 +3,10 @@ import App from './App'
 import { render } from '@testing-library/react'
 
 describe('Realiza teste da pagina app', ()=>{
-    test('Valida se a pagina APP eta sendo renderizada', ()=>{
-        render(<App/>);
+  test('Valida se a pagina APP eta sendo renderizada', ()=>{
+    render(<App/>);
         
-    })
+  })
 
 
 })
