@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  background-color: #007ACC;
+  padding: 20px 20px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  align-items: center;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.logo {
+  margin-left: 2rem;
+  display: flex;
+  font-size: 24px;
+  color: white;
+}
+
+.navlinks {
+  text-align: center;
+  margin-right: 35%;
+  display: flex;
+  gap: 30px;
+}
+
+.navlinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.account {
+  margin-right: 5vw;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.account img {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.account a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
