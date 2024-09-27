@@ -1,10 +1,13 @@
+import Botao from "../components/botao/Botao"
+
 
 function App() {
 
   return (
-    <center>
-      Arquivo
-    </center>
+    <>
+    <Botao texto="cancelar" variante="outlined" onClick={() => {}} />
+    <Botao texto="salvar" variante="contained"  onClick={() => {}} />
+    </>
   )
 }
 
