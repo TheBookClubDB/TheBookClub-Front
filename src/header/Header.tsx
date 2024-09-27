@@ -1,6 +1,7 @@
 import styles from './Header.module.css'
 import Logo from '../assets/Bookclube-branco.png'
 import Icon from '../assets/user-iconn.png'
+import { Link } from 'react-router-dom'
 
 function Header(){
 
@@ -13,13 +14,21 @@ function Header(){
         </div>
         
         <ul className={styles.navlinks}>
-          <li><a href="#"><strong>O que é Bookclub?</strong></a></li>
-          <li><a href="#"><strong>Contato</strong></a></li>
+          <Link to={'/sobre'}>
+            <li>O que é Bookclub?</li>
+          </Link>
+          <Link to={'/contato'}>
+            <li>Contato</li>
+          </Link>
         </ul>
+      
         <div className={styles.account}>
           <img src={Icon} alt="foto da conta"/>
-          <a href="#"><strong>Adiminstrtador</strong></a>
+          <Link to={'/adm'}>
+            Administrador
+          </Link>
         </div>
+        
 
       </nav>
     </header>
