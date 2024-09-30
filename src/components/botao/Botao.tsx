@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "@mui/material/Button";
+import React from 'react';
+import Button from '@mui/material/Button';
 import styles from './botao.module.css';
 
 interface ButtonProps {
@@ -12,9 +12,9 @@ interface ButtonProps {
 
 const Botao: React.FC<ButtonProps> = ({ onClick, texto, variante }) => {
   return (
-      <Button onClick={onClick } variant ={variante} size = 'large' className={styles.botao}>
-        {texto}
-      </Button>
+    <Button onClick={onClick } variant ={variante} size = 'large' className={styles.botao}>
+      {texto}
+    </Button>
   );
 };
 
