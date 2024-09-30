@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
-import Logo from '../assets/Bookclube-branco.png'
-import Icon from '../assets/user-iconn.png'
+import Logo from '../../assets/Bookclube-branco.png'
+import Icon from '../../assets/user-iconn.png'
 import { Link } from 'react-router-dom'
 
 function Header(){
@@ -10,7 +10,9 @@ function Header(){
       <nav className={styles.navbar}> 
 
         <div className={styles.logo}>
-          <img src={Logo} alt="Logo do site"/>
+          <Link to={"/"}>
+          <img src={Logo} role='logo' alt="Logo do site"/>
+          </Link>
         </div>
         
         <ul className={styles.navlinks}>
