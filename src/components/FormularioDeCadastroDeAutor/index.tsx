@@ -71,7 +71,7 @@ export default function FormularioDeCadastroDeAutor(){
     }
 
     return(
-        <Box component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
+        <Box aria-label='form' component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
             
                 <TextField style={{width:'100%'}}
                     required   
@@ -79,7 +79,7 @@ export default function FormularioDeCadastroDeAutor(){
                     error={erroNome}
                     helperText={erroNome?"Campo obrigatorio.":""}               
                     label="Nome"
-                    type="text"
+                    type='text'
                     placeholder='Digite  seu nome completo'      
                     onChange={handlerNome}
                 />
@@ -117,26 +117,27 @@ export default function FormularioDeCadastroDeAutor(){
                     <FormLabel id="radio-botoes-rotulo">Gênero</FormLabel>
                     <RadioGroup
                         aria-labelledby="objeto-de-radio-botons"
+                        aria-label="objeto-de-radio-botons"
                         defaultValue="outro"
                         name="radio-buttons-group"
                         onChange={handlerGenero}
                     >
                         <FormControlLabel
-                            aria-label='opcao-masculino'
+                            // aria-label='opcao-masculino'
                             value="masculino" 
                             control={<Radio />}
                             label="Masculino"
                          />
 
                         <FormControlLabel
-                            aria-label='opcao-feminino'
+                            // aria-label='opcao-feminino'
                             value="feminino" 
                             control={<Radio />} 
                             label="Feminino" 
                         />
 
                         <FormControlLabel 
-                            aria-label='opcao-outro'
+                            // aria-label='opcao-outro'
                             value="outro" 
                             control={<Radio />} 
                             label="Outro" 
