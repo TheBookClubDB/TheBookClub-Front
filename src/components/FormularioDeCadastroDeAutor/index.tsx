@@ -74,7 +74,8 @@ export default function FormularioDeCadastroDeAutor(){
         <Box component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
             
                 <TextField style={{width:'100%'}}
-                    required     
+                    required   
+                    aria-label='campo-para-digitar-o-nome'  
                     error={erroNome}
                     helperText={erroNome?"Campo obrigatorio.":""}               
                     label="Nome"
@@ -87,6 +88,7 @@ export default function FormularioDeCadastroDeAutor(){
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateField style={{margin:'10px 10px 10px 0px'}}
                         required
+                        aria-label='campo-para-digitar-a-data'
                         helperText={erroData?"Campo obrigatorio.":""} 
                         label="Data de nascimento"
                         value={dataDeNascimento}
@@ -102,6 +104,7 @@ export default function FormularioDeCadastroDeAutor(){
 
                 <TextField style={{margin:'10px 0px 10px 0px'}}
                     required
+                    aria-label='campo-para-digitar-o-cpf'
                     error={erroCpf}
                     helperText={erroCpf?"Campo obrigatorio.":""}     
                     label="CPF"
@@ -113,17 +116,35 @@ export default function FormularioDeCadastroDeAutor(){
                 <FormControl>
                     <FormLabel id="radio-botoes-rotulo">Gênero</FormLabel>
                     <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
+                        aria-labelledby="objeto-de-radio-botons"
                         defaultValue="outro"
                         name="radio-buttons-group"
                         onChange={handlerGenero}
                     >
-                        <FormControlLabel value="masculino" control={<Radio />} label="Masculino" />
-                        <FormControlLabel value="feminino" control={<Radio />} label="Feminino" />
-                        <FormControlLabel value="outro" control={<Radio />} label="Outro" />
+                        <FormControlLabel
+                            aria-label='opcao-masculino'
+                            value="masculino" 
+                            control={<Radio />}
+                            label="Masculino"
+                         />
+
+                        <FormControlLabel
+                            aria-label='opcao-feminino'
+                            value="feminino" 
+                            control={<Radio />} 
+                            label="Feminino" 
+                        />
+
+                        <FormControlLabel 
+                            aria-label='opcao-outro'
+                            value="outro" 
+                            control={<Radio />} 
+                            label="Outro" 
+                        />
+                        
                     </RadioGroup>
-                    </FormControl>
-                    <Button onClick={handleBotao}>teste</Button>
+                </FormControl>
+                <Button onClick={handleBotao}>teste</Button>
         </Box>
     )
 }
