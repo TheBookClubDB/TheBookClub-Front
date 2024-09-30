@@ -10,8 +10,8 @@ function Header(){
       <nav className={styles.navbar}> 
 
         <div className={styles.logo}>
-          <Link to={"/"}>
-          <img src={Logo} role='logo' alt="Logo do site"/>
+          <Link to={'/'}>
+            <img src={Logo} role='logo' alt="Logo do site"/>
           </Link>
         </div>
         
