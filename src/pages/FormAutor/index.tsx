@@ -1,16 +1,16 @@
 import { Box, Container } from '@mui/material'
 import Sidebar from '../../components/Sidebar'
-import Header from '../../header/Header';
+import Botao from '../../components/botao/Botao';
 
 const FormAutor = () => {
   return (
-    <>
-      <Header/>
-      <Box sx={{ display: 'flex'}}>
-        <Sidebar item="autor"/>
-        <Container/>
-      </Box>
-    </>
+    <Box sx={{ display: 'flex'}}>
+      <Sidebar item="autor"/>
+      <Container>
+        <Botao texto="cancelar" variante="outlined" onClick={() => {}} />
+        <Botao texto="salvar" variante="contained"  onClick={() => {}} />
+      </Container>
+    </Box>
   )
 }
 
