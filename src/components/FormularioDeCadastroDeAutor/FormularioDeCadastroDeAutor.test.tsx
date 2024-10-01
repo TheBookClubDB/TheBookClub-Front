@@ -1,4 +1,4 @@
-import { fireEvent, getByLabelText, render, screen } from '@testing-library/react'
+import {render, screen } from '@testing-library/react'
 import FormularioDeCadastroDeAutor from '.'
 import { beforeEach, describe, expect, test } from 'vitest'
 
