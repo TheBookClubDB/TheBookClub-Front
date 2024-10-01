@@ -33,9 +33,7 @@ export default function FormularioDeCadastroDeAutor(){
     }
 
     const handleBotao = async (): Promise<void> => {
-        // console.log('o nome é '+nome);
-        // console.log('data de nacimento é '+dataDeNascimento?.format('DD-MM-YYYY'));
-        // console.log('o cpf é '+cpf);
+        
         console.log('o genero é '+genero);
         validaCampoNome()
         validaCampoCpf()
@@ -71,7 +69,7 @@ export default function FormularioDeCadastroDeAutor(){
     }
 
     return(
-        <Box aria-label='form' component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
+        <Box onSubmit={handleBotao} aria-label='form' component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
             
                 <TextField style={{width:'100%'}}
                     required   
