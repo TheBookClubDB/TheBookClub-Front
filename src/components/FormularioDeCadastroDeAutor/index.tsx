@@ -123,21 +123,21 @@ export default function FormularioDeCadastroDeAutor(){
                         onChange={handlerGenero}
                     >
                         <FormControlLabel
-                            // aria-label='opcao-masculino'
+                            aria-label='opcao-masculino'
                             value="masculino" 
                             control={<Radio />}
                             label="Masculino"
                          />
 
                         <FormControlLabel
-                            // aria-label='opcao-feminino'
+                            aria-label='opcao-feminino'
                             value="feminino" 
                             control={<Radio />} 
                             label="Feminino" 
                         />
 
                         <FormControlLabel 
-                            // aria-label='opcao-outro'
+                            aria-label='opcao-outro'
                             value="outro" 
                             control={<Radio />} 
                             label="Outro" 

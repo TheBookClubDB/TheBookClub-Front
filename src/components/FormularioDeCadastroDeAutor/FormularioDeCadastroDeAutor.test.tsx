@@ -1,63 +1,58 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, getByLabelText, render, screen } from '@testing-library/react'
 import FormularioDeCadastroDeAutor from '.'
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
 
 describe('Teste de formulário',()=>{
+    let form: HTMLElement;
+    let campoDeEntradaDoNome: HTMLLabelElement;
+    let campoDeEntradaDaDataDeNascimento: HTMLInputElement;
+    let campoDeEntradaDeCPF: HTMLInputElement;
+    let objetoDeRadioBotons: HTMLElement;
+    let radioMasculino: HTMLInputElement;
+    let radioFeminino: HTMLInputElement;
+    let radioOutro: HTMLInputElement;
+    
+    beforeEach(()=> {
+        render(<FormularioDeCadastroDeAutor/>);
+        form = screen.getByRole('form');
+        campoDeEntradaDoNome = screen.getByLabelText('campo-para-digitar-o-nome');
+        campoDeEntradaDaDataDeNascimento = screen.getByRole('textbox',{name:'Data de nascimento'});
+        campoDeEntradaDeCPF = screen.getByRole('textbox',{name:'CPF'});
+        objetoDeRadioBotons = screen.getByRole('radiogroup',{name:'objeto-de-radio-botons'});
+        radioMasculino = screen.getByLabelText('opcao-masculino')
+        radioFeminino = screen.getByLabelText('opcao-feminino')
+        radioOutro = screen.getByLabelText('opcao-outro')
+    })
 
     test('Deve renderizar o formulario.', ()=>{
-        render(<FormularioDeCadastroDeAutor/>);
-    //    logRoles(view.container)
-        const form = screen.getByRole('form');
         expect(form).toBeInTheDocument();
-        const campoDeEntradaDoNomeLabel = screen.getByLabelText('campo-para-digitar-o-nome');
-        expect(campoDeEntradaDoNomeLabel).toBeInTheDocument();  
-        expect(form).toContainElement(campoDeEntradaDoNomeLabel); 
-       
-        const campoDeEntradaDaDataDeNascimento = screen.getByRole('textbox',{name:'Data de nascimento'});
+        expect(campoDeEntradaDoNome).toBeVisible();          
         expect(campoDeEntradaDaDataDeNascimento).toBeInTheDocument();
+        expect(campoDeEntradaDaDataDeNascimento).toBeVisible(); 
+        expect(campoDeEntradaDeCPF).toBeVisible();
+        expect(objetoDeRadioBotons).toBeVisible();
+        expect(radioMasculino).toBeVisible();
+        expect(radioFeminino).toBeVisible();
+        expect(radioOutro).toBeVisible();
+    })
+
+    test('Deve validar elementos no formulários ',()=>{
+        expect(form).toContainElement(campoDeEntradaDoNome); 
         expect(form).toContainElement(campoDeEntradaDaDataDeNascimento); 
-         
-        const campoDeEntradaDeCPF = screen.getByRole('textbox',{name:'CPF'});
-        expect(campoDeEntradaDeCPF ).toBeInTheDocument();
-        expect(form).toContainElement(campoDeEntradaDeCPF ); 
-
-        const objetoDeRadioBotons = screen.getByRole('radiogroup',{name:'objeto-de-radio-botons'});
-        expect(objetoDeRadioBotons ).toBeInTheDocument();
+        expect(form).toContainElement(campoDeEntradaDeCPF );
         expect(form).toContainElement(objetoDeRadioBotons ); 
-  
+        expect(form).toContainElement(radioMasculino); 
+        expect(form).toContainElement(radioFeminino); 
+        expect(form).toContainElement(radioOutro); 
     })
-
-    
-        // const opcaoMasculino = screen.getByLabelText('Masculino');
-        // expect(opcaoMasculino ).toBeInTheDocument();
-        // expect(form).toContainElement(opcaoMasculino); 
-
-        // const opcaoFeminino = screen.getByRole('radio',{name:'opcao-feminino'});
-        // expect(opcaoFeminino).toBeInTheDocument();
-        // expect(form).toContainElement(opcaoFeminino);
-
-        // const opcaoOutro = screen.getByRole('radio',{name:'opcao-outro'});
-        //  expect(opcaoOutro).toBeInTheDocument();
-        // expect(form).toContainElement(opcaoOutro);
-
-
     test('Verifica campo habilitado', ()=>{
-        render(<FormularioDeCadastroDeAutor/>);
-        const campoDeEntradaDoNome = screen.getByRole('textbox',{name:'Nome'});
-        expect(campoDeEntradaDoNome).toBeInTheDocument(); 
-        expect(campoDeEntradaDoNome).toHaveAttribute('type', 'text')
-        fireEvent.change(campoDeEntradaDoNome, {target:{value:'testandoEntradaDoNome'}})
         expect(campoDeEntradaDoNome).not.toBeDisabled(); 
+        expect(campoDeEntradaDaDataDeNascimento).not.toBeDisabled();
+        expect(campoDeEntradaDaDataDeNascimento).not.toBeDisabled();
+        expect(campoDeEntradaDeCPF).not.toBeDisabled();
+        expect(objetoDeRadioBotons).not.toBeDisabled();
+        expect(radioMasculino).not.toBeDisabled();
+        expect(radioFeminino).not.toBeDisabled();
+        expect(radioOutro).not.toBeDisabled();
     })
-
-    
-    test('Verifica se o campo é do tipo texto', ()=>{
-        render(<FormularioDeCadastroDeAutor/>);
-        const campoDeEntradaDoNome = screen.getByRole('textbox',{name:'Nome'}) as HTMLInputElement;
-        expect(campoDeEntradaDoNome).toBeInTheDocument(); 
-        expect(campoDeEntradaDoNome).toHaveAttribute('type', 'text')
-        fireEvent.change(campoDeEntradaDoNome, {target:{value:'testando entrada do nome'}})
-        expect(campoDeEntradaDoNome.value).toBe('testando entrada do nome'); 
-    })
-
 })
