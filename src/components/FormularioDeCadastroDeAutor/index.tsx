@@ -145,7 +145,6 @@ export default function FormularioDeCadastroDeAutor(){
                         
                     </RadioGroup>
                 </FormControl>
-                <Button onClick={handleBotao}>teste</Button>
         </Box>
     )
 }
