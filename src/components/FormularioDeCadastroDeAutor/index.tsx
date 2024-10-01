@@ -29,14 +29,14 @@ export default function FormularioDeCadastroDeAutor(){
     const handlerGenero = (evento: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
         const valor = evento.target.value;
         setGenero(valor);
-        
+       
     }
 
     const handleBotao = async (): Promise<void> => {
         // console.log('o nome é '+nome);
         // console.log('data de nacimento é '+dataDeNascimento?.format('DD-MM-YYYY'));
         // console.log('o cpf é '+cpf);
-        // console.log('o genero é '+genero);
+        console.log('o genero é '+genero);
         validaCampoNome()
         validaCampoCpf()
         validaCampoData()
