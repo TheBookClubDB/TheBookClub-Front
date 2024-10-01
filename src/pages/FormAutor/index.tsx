@@ -8,7 +8,7 @@ const FormAutor = () => {
     <Box sx={{ display: 'flex'}}>
       <Sidebar item="autor"/>
       <Container>
-      <FormularioDeCadastroDeAutor/>
+        <FormularioDeCadastroDeAutor/>
         <Botao texto="cancelar" variante="outlined" onClick={() => {}} />
         <Botao texto="salvar" variante="contained"  onClick={() => {}} />
       </Container>
