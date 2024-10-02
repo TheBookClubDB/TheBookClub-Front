@@ -5,110 +5,96 @@ import { DateField } from '@mui/x-date-pickers/DateField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
+import Botao from '../botao/Botao';
 
-export default function FormularioDeCadastroDeAutor(){
-   
-  const [nome, setNome] = useState<string>('');
-  const [dataDeNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
-  const [cpf, setCpf] = useState<string>('');
-  const [genero, setGenero] = useState<string>('Outro');
+interface FormularioProps {
+  handlerNome?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlerDataNascimento?: Date;
+  handlerCpf?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlerGenero?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlerBotaoSalvar: () => void;
+  handlerBotaoCancelar: () => void;
+}
+
+const FormularioDeCadastroDeAutor: React.FC<FormularioProps> = ({
+  handlerNome,
+  handlerCpf,
+  handlerGenero,
+  handlerBotaoSalvar,
+  handlerBotaoCancelar
+}) => {
+  const [handlerDataNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
   const [erroNome, setErroNome] = useState<boolean>(false);
   const [erroCpf, setErroCpf] = useState<boolean>(false);
   const [erroData, setErroData] = useState<boolean>(false);
 
-  const handlerNome = (evento: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
-    const valor = evento.target.value;
-    setNome(valor);  
-  }
-
-  const handlerCpf = (evento: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
-    const valor = evento.target.value;
-    setCpf(valor);
-  }
-
-  const handlerGenero = (evento: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
-    const valor = evento.target.value;
-    setGenero(valor);
-       
-  }
-
-  const handleBotao = async(): Promise<void> => {
+  handlerBotaoSalvar = async(): Promise<void> => {
     validaCampoNome();
     validaCampoCpf();
     validaCampoData();
-    validaCampoGenero(); 
   }
 
-  const validaCampoGenero = ()=>{
-    if(genero == ''){
-      setGenero('Outro')
-    }
-        
-  }
-
-
-  const validaCampoNome = ()=>{
-    if(nome == ''){
+  const validaCampoNome = () => {
+    if (handlerNome == null) {
       setErroNome(true)
-    }else{
+    } else {
       setErroNome(false)
-    }      
+    }
   }
 
-  const validaCampoCpf = ()=>{
-    if(cpf == ''){
+  const validaCampoCpf = () => {
+    if (handlerCpf == null) {
       setErroCpf(true)
-    }else{
+    } else {
       setErroCpf(false)
-    } 
-        
+    }
   }
 
-  const validaCampoData = ()=>{
-    if(!dayjs(dataDeNascimento).isValid()){
+  const validaCampoData = () => {
+    if (!dayjs(handlerDataNascimento).isValid()) {
       setErroData(true)
-    }else{
+    } else {
       setErroData(false)
-    } 
+    }
   }
 
-  return(
-    <Box onSubmit={handleBotao} aria-label='form' component="form" style={{width:'466px', marginTop:'10px', textAlign:'left'}}>
-            
-      <TextField style={{width:'100%'}}
-        required   
-        aria-label='campo-para-digitar-o-nome'  
+  return (
+    <Box aria-label='form' component="form" style={{ width: '466px', marginTop: '10px', textAlign: 'left' }}>
+
+      <TextField style={{ width: '100%' }}
+        required
+        aria-label='campo-para-digitar-o-nome'
         error={erroNome}
-        helperText={erroNome?'Campo obrigatorio.':''}               
+        helperText={erroNome ? 'Campo obrigatorio.' : ''}
         label="Nome"
         type='text'
-        placeholder='Digite  seu nome completo'      
+        placeholder='Digite  seu nome completo'
         onChange={handlerNome}
       />
-                  
-          
+
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateField style={{margin:'10px 10px 10px 0px'}}
+        <DateField style={{ margin: '10px 10px 10px 0px' }}
           required
           aria-label='campo-para-digitar-a-data'
-          helperText={erroData?'Campo obrigatorio.':''} 
+          helperText={erroData ? 'Campo obrigatorio.' : ''}
           label="Data de nascimento"
-          value={dataDeNascimento}
+          value={handlerDataNascimento}
           format="DD-MM-YYYY"
           onChange={(newValue) => setDataDeNascimento(newValue)}
-          slotProps={{textField: {
-            size: 'medium',
-            error: erroData
-          },
+          slotProps={{
+            textField: {
+              size: 'medium',
+              error: erroData
+            },
           }}
         />
       </LocalizationProvider>
 
-      <TextField style={{margin:'10px 0px 10px 0px'}}
+      <TextField style={{ margin: '10px 0px 10px 0px' }}
         required
         aria-label='campo-para-digitar-o-cpf'
         error={erroCpf}
-        helperText={erroCpf?'Campo obrigatorio.':''}     
+        helperText={erroCpf ? 'Campo obrigatorio.' : ''}
         label="CPF"
         type="text"
         placeholder="000.000.000-00"
@@ -126,27 +112,32 @@ export default function FormularioDeCadastroDeAutor(){
         >
           <FormControlLabel
             aria-label='opcao-masculino'
-            value="masculino" 
+            value="masculino"
             control={<Radio />}
             label="Masculino"
           />
 
           <FormControlLabel
             aria-label='opcao-feminino'
-            value="feminino" 
-            control={<Radio />} 
-            label="Feminino" 
+            value="feminino"
+            control={<Radio />}
+            label="Feminino"
           />
 
-          <FormControlLabel 
+          <FormControlLabel
             aria-label='opcao-outro'
-            value="outro" 
-            control={<Radio />} 
-            label="Outro" 
+            value="outro"
+            control={<Radio />}
+            label="Outro"
           />
-                        
+
         </RadioGroup>
       </FormControl>
+      <div>
+        <Botao texto='Cancelar' onClick={handlerBotaoCancelar} variante='outlined' />
+        <Botao texto='Salvar' onClick={handlerBotaoSalvar} variante='contained' />
+      </div>
     </Box>
   )
 }
+export default FormularioDeCadastroDeAutor
