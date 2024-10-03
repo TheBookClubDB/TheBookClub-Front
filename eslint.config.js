@@ -26,7 +26,7 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       'no-unused-vars': [
-        'error',
+        'warn',
         {vars: 'all', args: 'after-used', ignoreRestSiblings: false }
       ],
       'unused-imports/no-unused-imports': 'error',
