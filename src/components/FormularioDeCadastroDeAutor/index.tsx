@@ -8,11 +8,14 @@ import dayjs, { Dayjs } from 'dayjs';
 import Botao from '../botao/Botao';
 
 interface FormularioProps {
+  // eslint-disable-next-line no-unused-vars
   handlerNome?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlerDataNascimento?: Date;
+  // eslint-disable-next-line no-unused-vars
   handlerCpf?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // eslint-disable-next-line no-unused-vars
   handlerGenero?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handlerBotaoSalvar?: () => void;
+  handlerBotaoSalvar?: () => void;
   handlerBotaoCancelar?: () => void;
 }
 
@@ -20,8 +23,8 @@ const FormularioDeCadastroDeAutor: React.FC<FormularioProps> = ({
   handlerNome,
   handlerCpf,
   handlerGenero,
-  handlerBotaoSalvar = ()=>{console.log('não tem função')},
-  handlerBotaoCancelar = ()=>{console.log('não tem função')}
+  handlerBotaoSalvar = ()=>{},
+  handlerBotaoCancelar = ()=>{}
 }) => {
   const [handlerDataNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
   const [erroNome, setErroNome] = useState<boolean>(false);
