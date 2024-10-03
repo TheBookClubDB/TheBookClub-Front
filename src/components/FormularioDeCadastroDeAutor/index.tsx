@@ -12,16 +12,16 @@ interface FormularioProps {
   handlerDataNascimento?: Date;
   handlerCpf?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlerGenero?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handlerBotaoSalvar: () => void;
-  handlerBotaoCancelar: () => void;
+    handlerBotaoSalvar?: () => void;
+  handlerBotaoCancelar?: () => void;
 }
 
 const FormularioDeCadastroDeAutor: React.FC<FormularioProps> = ({
   handlerNome,
   handlerCpf,
   handlerGenero,
-  handlerBotaoSalvar,
-  handlerBotaoCancelar
+  handlerBotaoSalvar = ()=>{console.log('não tem função')},
+  handlerBotaoCancelar = ()=>{console.log('não tem função')}
 }) => {
   const [handlerDataNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
   const [erroNome, setErroNome] = useState<boolean>(false);

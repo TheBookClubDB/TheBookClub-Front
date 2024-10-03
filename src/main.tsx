@@ -5,7 +5,7 @@ import FormularioDeCadastroDeAutor from './components/FormularioDeCadastroDeAuto
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <FormularioDeCadastroDeAutor/>
+    <FormularioDeCadastroDeAutor />
     {/* <RoutesProvider/> */}
   </StrictMode>,
 )
