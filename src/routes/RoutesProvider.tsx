@@ -28,9 +28,7 @@ function RoutesProvider(){
   }])
 
   return(
-
     <RouterProvider router={router}/>
-
   )
 }
 
