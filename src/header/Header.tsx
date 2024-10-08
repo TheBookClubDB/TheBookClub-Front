@@ -4,22 +4,19 @@ import { Link } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
 
-function Header(){
-
-  return(
-
-    
+function Header() {
+  return (
     <header>
-      <nav className={styles.navbar}> 
+      <nav className={styles.navbar}>
 
         <div className={styles.logo}>
-          <img src={Logo} alt="Logo do site"/>
+          <img src={Logo} alt="Logo do site" />
         </div>
-      
+
         <div className={styles.account}>
           <div className={styles.avatar}>
             <Avatar alt='Avatar' variant='circular'>
-              <PersonIcon/>
+              <PersonIcon />
             </Avatar>
           </div>
           <Link to={'/adm'}>
@@ -33,5 +30,7 @@ function Header(){
   );
   
 }
+
 export default Header;
+
 
