@@ -20,9 +20,9 @@ function Header(){
       
         <div className={styles.account}>
           <div className={styles.avatar}>
-          <Avatar alt='Avatar' variant='circular'>
-            <PersonIcon/>
-          </Avatar>
+            <Avatar alt='Avatar' variant='circular'>
+              <PersonIcon/>
+            </Avatar>
           </div>
           <Link to={'/adm'}>
             Olá, Usuário
