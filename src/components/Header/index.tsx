@@ -1,11 +1,14 @@
 import styles from './Header.module.css'
 import Logo from '../../assets/Bookclube-branco.png'
-import Icon from '../../assets/user-iconn.png'
 import { Link } from 'react-router-dom'
+import Avatar from '@mui/material/Avatar';
+import PersonIcon from '@mui/icons-material/Person';
 
 function Header(){
 
   return(
+
+    
     <header>
       <nav className={styles.navbar}> 
 
@@ -14,26 +17,23 @@ function Header(){
             <img src={Logo} role='logo' alt="Logo do site"/>
           </Link>
         </div>
-        
-        <ul className={styles.navlinks}>
-          <Link to={'/sobre'}>
-            <li>O que é Bookclub?</li>
-          </Link>
-          <Link to={'/contato'}>
-            <li>Contato</li>
-          </Link>
-        </ul>
       
         <div className={styles.account}>
-          <img src={Icon} alt="foto da conta"/>
+          <div className={styles.avatar}>
+          <Avatar alt='Avatar' variant='circular'>
+            <PersonIcon/>
+          </Avatar>
+          </div>
           <Link to={'/adm'}>
-            Administrador
+            Olá, Usuário
           </Link>
         </div>
         
 
       </nav>
     </header>
-  )
+  );
+  
 }
 export default Header;
+

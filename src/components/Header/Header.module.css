@@ -11,7 +11,7 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  background-color: #007ACC;
+  background-color: #850f8d;
   padding: 20px 20px;
 }
 
@@ -49,18 +49,17 @@ ul{
 }
 
 .account {
-  margin-right: 5vw;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
 }
 
-.account img {
-  margin-right: 20px;
+.avatar {
+  display: flex;
+  margin-left: 1520px;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  border: 2px solid white;
+  align-items: center;
 }
 
 .account a {
