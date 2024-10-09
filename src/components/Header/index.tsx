@@ -21,11 +21,11 @@ function Header() {
               <PersonIcon />
             </Avatar>
           </div>
-            <div className={styles.usuario}>
+          <div className={styles.usuario}>
           
               Olá, Usuário
 
-            </div>
+          </div>
         </div>
         
 
