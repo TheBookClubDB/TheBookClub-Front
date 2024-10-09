@@ -7,12 +7,12 @@ import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import Botao from '../botao/Botao';
 import axios from 'axios';
-import styles from "./style.module.css";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Formulario = () => {
-
+  const navigate = useNavigate();
   const [nome, setNome] = useState<string>('');
   const [dataNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
   const [genero, setGenero] = useState<string>('Outros');
@@ -21,91 +21,103 @@ const Formulario = () => {
   const [openAlert, setOpenAlert] = useState<boolean>(false);
   const [messageAlert, setMessageAlert] = useState<string>('');
   const [alertSeverity, setAlertSeverity] = useState<'error' | 'success'>('error');
-
   const handleCloseAlert = () => {
     setOpenAlert(false)
   }
 
-  const handlerBotaoSalvar = async (): Promise<void> => {
-    validaCampoNome();
-    validaCampoData();
-    console.log('nome = ' + nome)
-    console.log('Nascimento = ' + dataNascimento?.format("DD-MM-YYYY"))
-    console.log('genero = ' + genero)
+  const botaoCancelar = async () => {
+    navigate('/')
   }
-
-  const botaoEnviar = async () => {// modal de confirmação ver com o guilherme
+  const enviarFormulario = async () => {
     try {
       const dataDeNascimentoFormatada = dataNascimento?.format("DD-MM-YYYY")
       const payload = {
         nome: nome,
-
         nascimento: dataDeNascimentoFormatada,
         genero: genero,
       };
       await axios.post("http://localhost:8081/autor/registro", payload);
-      // navigate("/");
+      setMessageAlert('Registro realizado com sucesso!');
+      setAlertSeverity("success");
+      navigate("/");
     } catch (error) {
       let erroMensagem = "Erro ao salvar.";
       if (axios.isAxiosError(error)) {
         erroMensagem = error.response?.data || erroMensagem;
         setMessageAlert(erroMensagem);
         setAlertSeverity("error");
-      } setOpenAlert(true);
+      }
     }
+
+    setOpenAlert(true);
   };
 
-  const validaCampoNome = () => {
-    if (nome == '') {
-      setErroNome(true)
+  const botaoSalvar = async (): Promise<void> => {
+    const camposInvalido: boolean = validarCampos();
+
+    if (camposInvalido) {
+      setMessageAlert('Por favor, preencha todos os campos corretamente.');
+      setAlertSeverity("error");
+      setOpenAlert(true);
     } else {
-      setErroNome(false)
+      await enviarFormulario();
     }
+
   }
 
-  const validaCampoData = () => {
-    if (!dayjs(dataNascimento).isValid()) {
-      setErroData(true)
-    } else {
-      setErroData(false)
+  const validarCampos = (): boolean => {
+    let nomeInvalido: boolean = false;
+    let dataInvalida: boolean = false;
+
+    if (nome === '') {
+      setErroNome(true);
+      nomeInvalido = true;
     }
+
+    if (!dayjs(dataNascimento).isValid()) {
+      setErroData(true);
+      dataInvalida = true;
+    }
+
+    return nomeInvalido || dataInvalida;
+
   }
 
   return (
     <>
       <Box aria-label='form' component="form" style={{ width: '466px', marginTop: '10px', textAlign: 'left' }}>
 
-        <div style={{display:'flex', gap:'6px', marginTop:'24px', marginBottom:'16px'}}>
-            <TextField style={{ width: '362px', height:'57px' }}
+        <div style={{ display: 'flex', gap: '6px', marginTop: '24px', marginBottom: '16px' }}>
+          <TextField style={{ width: '362px', height: '57px' }}
+            required
+            aria-label='campo-para-digitar-o-nome'
+            error={erroNome}
+            helperText={erroNome ? 'Campo obrigatorio.' : ''}
+            label="Nome"
+            type='text'
+            placeholder='Digite  seu nome completo'
+            onChange={(e) => {
+              setNome(e.target.value)
+            }}
+          />
+
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateField style={{ width: '179', height: '57px' }}
               required
-              aria-label='campo-para-digitar-o-nome'
-              error={erroNome}
-              helperText={erroNome ? 'Campo obrigatorio.' : ''}
-              label="Nome"
-              type='text'
-              placeholder='Digite  seu nome completo'
-              onChange={(e) => {
-                setNome(e.target.value)
+              aria-label='campo-para-digitar-a-data'
+              helperText={erroData ? 'Campo obrigatorio.' : ''}
+              label="Data de nascimento"
+              value={dataNascimento}
+              format="DD-MM-YYYY"
+              onChange={(newValue) => setDataDeNascimento(newValue)}
+              slotProps={{
+                textField: {
+                  size: 'medium',
+                  error: erroData
+                },
               }}
             />
-
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateField style={{width:'179', height:'57px'  }}
-                required
-                aria-label='campo-para-digitar-a-data'
-                helperText={erroData ? 'Campo obrigatorio.' : ''}
-                label="Data de nascimento"
-                value={dataNascimento}
-                format="DD-MM-YYYY"
-                onChange={(newValue) => setDataDeNascimento(newValue)}
-                slotProps={{
-                  textField: {
-                    size: 'medium',
-                    error: erroData
-                  },
-                }}
-              />
-            </LocalizationProvider>
+          </LocalizationProvider>
         </div>
 
         <FormControl>
@@ -143,11 +155,11 @@ const Formulario = () => {
           </RadioGroup>
         </FormControl>
 
-        <div style={{display:'flex',width:'415px', height:'50px', gap:'8px', marginBottom:'50px', marginTop:'16px'}}>
-          
-            <Botao texto='Cancelar' onClick={() => { }} variante='outlined' />
-            <Botao texto='Salvar' onClick={handlerBotaoSalvar} variante='contained' />
-           
+        <div style={{ display: 'flex', width: '415px', height: '50px', gap: '8px', marginBottom: '50px', marginTop: '16px' }}>
+
+          <Botao texto='Cancelar' onClick={botaoCancelar} variante='outlined' />
+          <Botao texto='Salvar' onClick={botaoSalvar} variante='contained' />
+
         </div>
       </Box>
       {openAlert && (
@@ -160,6 +172,10 @@ const Formulario = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex: 1000,
+            paddingTop: '6px',
+            paddingRight: '16px',
+            paddingBottom: '6px',
+            paddingLeft: '16px'
           }}>
           {messageAlert}
         </Alert>)}
