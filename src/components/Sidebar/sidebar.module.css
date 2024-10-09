@@ -1,9 +1,7 @@
 .sidebarContainer {
-    display: flex;
-    flex-direction: column;
-    width: 18vw;
+    width: 15vw;
     height: 100vh;
-    padding: 10% 5%;
+    padding-top: 2%;
 }
 
 .lista {
@@ -19,4 +17,8 @@
 .iconeLista {
     margin-right: 1vh;
     color: #565656;
+}
+
+.sidebarContainer div  {
+    color: #000 !important;
 }
