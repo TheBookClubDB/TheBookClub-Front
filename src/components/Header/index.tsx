@@ -21,9 +21,11 @@ function Header() {
               <PersonIcon />
             </Avatar>
           </div>
-          <Link to={'/adm'}>
-            Olá, Usuário
-          </Link>
+            <div className={styles.usuario}>
+          
+              Olá, Usuário
+
+            </div>
         </div>
         
 
