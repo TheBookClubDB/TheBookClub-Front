@@ -1,6 +1,5 @@
 import styles from './Header.module.css'
 import Logo from '../assets/Bookclube-branco.png'
-import { Link } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
 
