@@ -40,8 +40,8 @@ ul {
   gap: 30px;
 }
 
-.navlinks a {
-  color: white;
+.usuario {
+  color:white;
   text-decoration: none;
   font-size: 16px;
 }
