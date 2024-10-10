@@ -124,8 +124,21 @@ const Sidebar = ({pagina}: paginaAtual) => {
     }
   }
 
+  const estilizacaoAbaSelecionada = () => {
+    const componente = document.querySelector('.ant-menu-item-selected')
+    if (componente) {
+      (componente as HTMLElement).style.fontWeight = '700'
+    }
+  }
+
   useEffect(() => {
     paginaSelecionada(pagina)
+
+    const timeoutId = setTimeout(() => {
+      estilizacaoAbaSelecionada();
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
   }, [pagina])
 
   return(
@@ -137,7 +150,7 @@ const Sidebar = ({pagina}: paginaAtual) => {
             itemSelectedBg: '#850F8D',
             itemSelectedColor: '#fff',
             itemColor: '#000',
-            itemBg: '#fef3ff',        
+            itemBg: '#fef3ff'
           }
         }
       }}
