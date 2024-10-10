@@ -4,21 +4,6 @@
     padding-top: 2%;
 }
 
-.lista {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400 !important;
-}
-
-.campoBusca {
-    width: 100%;
-    margin-bottom: 1vw !important;
-}
-
-.iconeLista {
-    margin-right: 1vh;
-    color: #565656;
-}
-
 .sidebarContainer div  {
     color: #000 !important;
 }
