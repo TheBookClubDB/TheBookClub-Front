@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DateField } from '@mui/x-date-pickers/DateField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import Botao from '../botao/Botao';
 import axios from 'axios';
@@ -25,39 +25,39 @@ const Formulario = () => {
     setOpenAlert(false)
   }
 
-  const botaoCancelar = async () => {
+  const botaoCancelar = async() => {
     navigate('/')
   }
-  const enviarFormulario = async () => {
+  const enviarFormulario = async() => {
     try {
-      const dataDeNascimentoFormatada = dataNascimento?.format("DD-MM-YYYY")
+      const dataDeNascimentoFormatada = dataNascimento?.format('DD-MM-YYYY')
       const payload = {
         nome: nome,
         nascimento: dataDeNascimentoFormatada,
         genero: genero,
       };
-      await axios.post("http://localhost:8081/autor/registro", payload);
+      await axios.post('http://localhost:8081/autor/registro', payload);
       setMessageAlert('Registro realizado com sucesso!');
-      setAlertSeverity("success");
-      navigate("/");
+      setAlertSeverity('success');
+      navigate('/');
     } catch (error) {
-      let erroMensagem = "Erro ao salvar.";
+      let erroMensagem = 'Erro ao salvar.';
       if (axios.isAxiosError(error)) {
         erroMensagem = error.response?.data || erroMensagem;
         setMessageAlert(erroMensagem);
-        setAlertSeverity("error");
+        setAlertSeverity('error');
       }
     }
 
     setOpenAlert(true);
   };
 
-  const botaoSalvar = async (): Promise<void> => {
+  const botaoSalvar = async(): Promise<void> => {
     const camposInvalido: boolean = validarCampos();
 
     if (camposInvalido) {
       setMessageAlert('Por favor, preencha todos os campos corretamente.');
-      setAlertSeverity("error");
+      setAlertSeverity('error');
       setOpenAlert(true);
     } else {
       await enviarFormulario();
@@ -125,7 +125,7 @@ const Formulario = () => {
           <RadioGroup
             aria-labelledby="objeto-de-radio-botons"
             aria-label="objeto-de-radio-botons"
-            defaultValue="outros"
+            defaultValue="outro"
             name="radio-buttons-group"
             onChange={(e) => {
               setGenero(e.target.value)
@@ -167,10 +167,10 @@ const Formulario = () => {
           onClose={handleCloseAlert}
           severity={alertSeverity}
           sx={{
-            position: "absolute",
-            top: "15%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            position: 'absolute',
+            top: '15%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
             zIndex: 1000,
             paddingTop: '6px',
             paddingRight: '16px',
