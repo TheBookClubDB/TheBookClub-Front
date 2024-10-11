@@ -8,7 +8,7 @@ const FormAutor = () => {
     <>
       <Header/>
       <Box sx={{ display: 'flex'}}>
-        <Sidebar item="autor"/>
+        <Sidebar pagina="cAutor"/>
         <Container>
           <FormularioDeCadastroDeAutor/>
         </Container>
