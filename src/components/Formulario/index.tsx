@@ -9,13 +9,11 @@ import Botao from '../botao/Botao';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
-const Formulario = () => {
+const FormularioCadastroAutor = () => {
   const navigate = useNavigate();
   const [nome, setNome] = useState<string>('');
   const [dataNascimento, setDataDeNascimento] = useState<Dayjs | null>(dayjs(''));
-  const [genero, setGenero] = useState<string>('Outros');
+  const [genero, setGenero] = useState<string>('OUTRO');
   const [erroNome, setErroNome] = useState<boolean>(false);
   const [erroData, setErroData] = useState<boolean>(false);
   const [openAlert, setOpenAlert] = useState<boolean>(false);
@@ -28,14 +26,16 @@ const Formulario = () => {
   const botaoCancelar = async() => {
     navigate('/')
   }
+
   const enviarFormulario = async() => {
     try {
-      const dataDeNascimentoFormatada = dataNascimento?.format('DD-MM-YYYY')
+      const dataDeNascimentoFormatada = dataNascimento?.format('YYYY-MM-DD')
       const payload = {
         nome: nome,
         nascimento: dataDeNascimentoFormatada,
         genero: genero,
       };
+
       await axios.post('http://localhost:8081/autor/registro', payload);
       setMessageAlert('Registro realizado com sucesso!');
       setAlertSeverity('success');
@@ -62,7 +62,6 @@ const Formulario = () => {
     } else {
       await enviarFormulario();
     }
-
   }
 
   const validarCampos = (): boolean => {
@@ -80,7 +79,6 @@ const Formulario = () => {
     }
 
     return nomeInvalido || dataInvalida;
-
   }
 
   return (
@@ -125,7 +123,7 @@ const Formulario = () => {
           <RadioGroup
             aria-labelledby="objeto-de-radio-botons"
             aria-label="objeto-de-radio-botons"
-            defaultValue="outro"
+            defaultValue="OUTRO"
             name="radio-buttons-group"
             onChange={(e) => {
               setGenero(e.target.value)
@@ -133,21 +131,21 @@ const Formulario = () => {
           >
             <FormControlLabel
               aria-label='opcao-masculino'
-              value="masculino"
+              value="MASCULINO"
               control={<Radio />}
               label="Masculino"
             />
 
             <FormControlLabel
               aria-label='opcao-feminino'
-              value="feminino"
+              value="FEMININO"
               control={<Radio />}
               label="Feminino"
             />
 
             <FormControlLabel
               aria-label='opcao-outro'
-              value="outro"
+              value="OUTRO"
               control={<Radio />}
               label="Outro"
             />
@@ -182,4 +180,4 @@ const Formulario = () => {
     </>
   )
 }
-export default Formulario
+export default FormularioCadastroAutor
