@@ -8,6 +8,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import Botao from '../botao/Botao';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import style from './style.module.css'
 
 const FormularioCadastroAutor = () => {
   const navigate = useNavigate();
@@ -42,11 +43,18 @@ const FormularioCadastroAutor = () => {
       navigate('/');
     } catch (error) {
       let erroMensagem = 'Erro ao salvar.';
+      
       if (axios.isAxiosError(error)) {
-        erroMensagem = error.response?.data || erroMensagem;
+        const erroData = error.response?.data;
+        if(typeof erroData === 'string'){
+          erroMensagem = erroData;
+        }else if(typeof erroData === 'object'){
+          erroMensagem = erroData.error || erroData.message || erroMensagem;
+
+        }
         setMessageAlert(erroMensagem);
         setAlertSeverity('error');
-      }
+      } 
     }
 
     setOpenAlert(true);
@@ -83,24 +91,24 @@ const FormularioCadastroAutor = () => {
 
   return (
     <>
-      <Box aria-label='form' component="form" style={{ width: '466px', marginTop: '10px', textAlign: 'left' }}>
+      <Box aria-label='form' component="form" className={style.box}>
 
-        <div style={{ display: 'flex', gap: '6px', marginTop: '24px', marginBottom: '16px' }}>
-          <TextField style={{ width: '362px', height: '57px' }}
+        <div className={style.divCampos}>
+          <TextField className={style.nomeTexField}
             required
             aria-label='campo-para-digitar-o-nome'
             error={erroNome}
             helperText={erroNome ? 'Campo obrigatorio.' : ''}
             label="Nome"
             type='text'
-            placeholder='Digite  seu nome completo'
+            placeholder='Digite o nome da pessoa autora'
             onChange={(e) => {
               setNome(e.target.value)
             }}
           />
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateField style={{ width: '179', height: '57px' }}
+            <DateField className={style.dataFieldData}
               required
               aria-label='campo-para-digitar-a-data'
               helperText={erroData ? 'Campo obrigatorio.' : ''}
@@ -153,8 +161,7 @@ const FormularioCadastroAutor = () => {
           </RadioGroup>
         </FormControl>
 
-        <div style={{ display: 'flex', width: '415px', height: '50px', gap: '8px', marginBottom: '50px', marginTop: '16px' }}>
-
+        <div className={style.divBotoes}>
           <Botao texto='Cancelar' onClick={botaoCancelar} variante='outlined' />
           <Botao texto='Salvar' onClick={botaoSalvar} variante='contained' />
 
