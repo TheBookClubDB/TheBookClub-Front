@@ -40,7 +40,11 @@ const FormularioCadastroAutor = () => {
       await axios.post('http://localhost:8081/autor/registro', payload);
       setMessageAlert('Registro realizado com sucesso!');
       setAlertSeverity('success');
-      navigate('/');
+      setOpenAlert(true);
+      setTimeout( async() => {
+        await navigate('/');
+      }, 2000)
+      
     } catch (error) {
       let erroMensagem = 'Erro ao salvar.';
       
@@ -54,10 +58,11 @@ const FormularioCadastroAutor = () => {
         }
         setMessageAlert(erroMensagem);
         setAlertSeverity('error');
+        setOpenAlert(true);
       } 
     }
 
-    setOpenAlert(true);
+    
   };
 
   const botaoSalvar = async(): Promise<void> => {
