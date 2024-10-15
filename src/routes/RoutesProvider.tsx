@@ -7,12 +7,16 @@ function RoutesProvider(){
     element:<><text>Home</text></>
   },
   {
-    path:'/sobre',
-    element:<>Sobre</>
+    path:'/devolver',
+    element:<text>Devolver</text>
   },
   {
-    path:'/contato',
-    element:<text>Contato</text>
+    path:'/alugar',
+    element:<text>Alugar</text>
+  },
+  {
+    path:'/historico',
+    element:<text>Histórico</text>
   },
   {
     path:'/adm',
@@ -21,6 +25,26 @@ function RoutesProvider(){
   {
     path:'/criar-autor',
     element:<FormAutor/>
+  },
+  {
+    path:'/criar-locatario',
+    element:<text>Criar Locatário</text>
+  },
+  {
+    path:'/criar-livro',
+    element:<text>Criar Livro</text>
+  },
+  {
+    path:'/geren-autor',
+    element:<text>Gerenciar Autores</text>
+  },
+  {
+    path:'/geren-locatario',
+    element:<text>Gerenciar Locatários</text>
+  },
+  {
+    path:'/geren-livro',
+    element:<text>Gerenciar Livros</text>
   },
   {
     path:'*',
