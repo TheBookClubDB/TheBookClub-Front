@@ -1,7 +1,8 @@
 import { Box, Container } from '@mui/material'
 import Sidebar from '../../components/Sidebar'
 import Header from '../../components/Header';
-import FormularioDeCadastroDeAutor from '../../components/FormularioDeCadastroDeAutor';
+import FormularioDeCadastroDeAutor from '../../components/Formulario';
+
 
 const FormAutor = () => {
   return (
