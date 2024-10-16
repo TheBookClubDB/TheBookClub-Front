@@ -62,12 +62,12 @@ const items: MenuItem[] = [
         </NavLink>
       )},
       { key: '8', label: (
-        <NavLink to={'/geren-locat'}>
-          Autores 
+        <NavLink to={'/geren-locatario'}>
+          Locatários 
         </NavLink>
       )},
       { key: '9', label: (
-        <NavLink to={'/geren-autor'}>
+        <NavLink to={'/geren-livro'}>
           Livros 
         </NavLink>
       )}

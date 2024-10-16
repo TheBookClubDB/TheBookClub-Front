@@ -4,7 +4,7 @@ import FormAutor from '../pages/FormAutor';
 function RoutesProvider(){
   const router = createBrowserRouter([{
     path:'/', 
-    element:<><text>Home</text></>
+    element:<><text>Login</text></>
   },
   {
     path:'/devolver',
