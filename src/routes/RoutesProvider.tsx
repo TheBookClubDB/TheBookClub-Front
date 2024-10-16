@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import FormAutor from '../pages/FormAutor';
+import Sidebar from '../components/Sidebar';
 
 function RoutesProvider(){
   const router = createBrowserRouter([{
     path:'/', 
-    element:<><text>Login</text></>
+    element:<Sidebar pagina=''/>
   },
   {
     path:'/devolver',
