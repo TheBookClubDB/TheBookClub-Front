@@ -25,7 +25,7 @@ const FormularioCadastroAutor = () => {
   }
 
   const botaoCancelar = async() => {
-    navigate('/')
+    navigate('/adm')
   }
 
   const enviarFormulario = async() => {
