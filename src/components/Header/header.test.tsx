@@ -29,7 +29,7 @@ describe('Testa o componente da Header', () => {
     expect(logo).toBeVisible()
 
     logo.click();
-    expect(window.location.pathname).toBe('/')
+    expect(window.location.pathname).toBe('/adm')
   })
  
 });
