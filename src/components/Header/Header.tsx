@@ -2,6 +2,7 @@ import styles from './Header.module.css';
 import Logo from '../../assets/Bookclube-branco.png';
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -9,7 +10,9 @@ function Header() {
       <nav className={styles.navbar}>
 
         <div className={styles.logo}>
-          <img src={Logo} role="Logo" alt="Logo do site" />
+          <Link to='/adm'>
+            <img src={Logo} role="Logo" alt="Logo do site" />
+          </Link>
         </div>
 
         <div className={styles.account}>
