@@ -107,6 +107,9 @@ const FormularioCadastroAutor = () => {
             label="Nome"
             type='text'
             placeholder='Digite o nome da pessoa autora'
+            slotProps={{
+              htmlInput: {maxLength: 70},
+            }}
             onChange={(e) => {
               setNome(e.target.value)
             }}
