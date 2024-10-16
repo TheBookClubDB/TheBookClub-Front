@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/material'
 import Sidebar from '../../components/Sidebar'
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import FormularioDeCadastroDeAutor from '../../components/Formulario';
 import Titulo from '../../components/Titulo';
 import Breadcrumb from '../../components/BreadCrumb';

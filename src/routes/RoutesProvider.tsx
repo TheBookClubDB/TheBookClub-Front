@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 
 function RoutesProvider(){
   const router = createBrowserRouter([{
-    path:'/', 
+    path:'/',
     element:<Sidebar pagina=''/>
   },
   {
