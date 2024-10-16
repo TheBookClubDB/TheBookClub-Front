@@ -1,0 +1,10 @@
+.sidebarContainer {
+    width: 15vw;
+    height: 100vh;
+    padding-top: 2%;
+    font-family: "Open Sans";
+}
+
+.sidebarContainer div  {
+    color: #000 !important;
+}
