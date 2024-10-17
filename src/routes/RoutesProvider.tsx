@@ -10,19 +10,19 @@ function RoutesProvider(){
   },
   {
     path:'/devolver',
-    element:<text>Devolver</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/alugar',
-    element:<text>Alugar</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/historico',
-    element:<text>Histórico</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/adm',
-    element:<div>Administrador</div>
+    element:<NaoEncontrada/>
   },
   {
     path:'/criar-autor',
@@ -30,23 +30,23 @@ function RoutesProvider(){
   },
   {
     path:'/criar-locatario',
-    element:<text>Criar Locatário</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/criar-livro',
-    element:<text>Criar Livro</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/geren-autor',
-    element:<text>Gerenciar Autores</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/geren-locatario',
-    element:<text>Gerenciar Locatários</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'/geren-livro',
-    element:<text>Gerenciar Livros</text>
+    element:<NaoEncontrada/>
   },
   {
     path:'*',
