@@ -3,6 +3,7 @@ import FormAutor from '../pages/FormAutor';
 import Sidebar from '../components/Sidebar';
 import NaoEncontrada from '../pages/NaoEncontrada';
 
+
 function RoutesProvider(){
   const router = createBrowserRouter([{
     path:'/',

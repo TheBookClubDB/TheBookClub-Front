@@ -63,7 +63,6 @@ const FormularioCadastroAutor = () => {
       } 
     }
 
-    
   };
 
   const botaoSalvar = async(): Promise<void> => {
