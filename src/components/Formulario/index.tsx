@@ -1,7 +1,7 @@
 import { Alert, Box, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DateField } from '@mui/x-date-pickers/DateField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
@@ -112,24 +112,28 @@ const FormularioCadastroAutor = () => {
               htmlInput: {maxLength: 70},
             }}
             onChange={(e) => {
+              setErroNome(false)
               setNome(e.target.value)
             }}
           />
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateField className={style.dataFieldData}
-              required
+            <DatePicker className={style.dataFieldData}
               aria-label='campo-para-digitar-a-data'
-              helperText={erroData ? 'Campo obrigatorio.' : ''}
+              slotProps={{
+                textField: {
+                  helperText: 
+                    erroData ? 'Campo obrigatorio.' : '', 
+                    size: 'medium',
+                    error: erroData
+                }
+              }}
               label="Data de nascimento"
               value={dataNascimento}
               format="DD-MM-YYYY"
-              onChange={(newValue) => setDataDeNascimento(newValue)}
-              slotProps={{
-                textField: {
-                  size: 'medium',
-                  error: erroData
-                },
+              onChange={(newValue) => {
+                setErroData(false)
+                setDataDeNascimento(newValue)
               }}
             />
           </LocalizationProvider>
