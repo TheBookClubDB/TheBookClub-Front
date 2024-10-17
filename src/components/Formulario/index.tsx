@@ -25,6 +25,8 @@ const FormularioCadastroAutor = () => {
     setOpenAlert(false)
   }
 
+  const currentDate = dayjs();
+
   const botaoCancelar = async() => {
     navigate('/*')
   }
@@ -92,6 +94,11 @@ const FormularioCadastroAutor = () => {
       dataInvalida = true;
     }
 
+    if (dataNascimento && dataNascimento > currentDate) {
+      setErroData(true);
+      dataInvalida = true;
+    }
+
     return nomeInvalido || dataInvalida;
   }
 
@@ -128,6 +135,7 @@ const FormularioCadastroAutor = () => {
                     error: erroData
                 }
               }}
+              maxDate={currentDate}
               label="Data de nascimento"
               value={dataNascimento}
               format="DD-MM-YYYY"
