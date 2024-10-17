@@ -9,6 +9,7 @@ import Botao from '../botao/Botao';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import style from './style.module.css'
+import api from '../../lib/api';
 
 const FormularioCadastroAutor = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const FormularioCadastroAutor = () => {
         genero: genero,
       };
 
-      await axios.post('http://localhost:8081/autor/registro', payload);
+      await api.post('/autor/registro', payload);
       setMessageAlert('Registro realizado com sucesso!');
       setAlertSeverity('success');
       setOpenAlert(true);
