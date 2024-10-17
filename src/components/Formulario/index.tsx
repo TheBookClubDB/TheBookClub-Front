@@ -25,7 +25,7 @@ const FormularioCadastroAutor = () => {
   }
 
   const botaoCancelar = async() => {
-    navigate('/adm')
+    navigate('/*')
   }
 
   const enviarFormulario = async() => {
@@ -42,7 +42,7 @@ const FormularioCadastroAutor = () => {
       setAlertSeverity('success');
       setOpenAlert(true);
       setTimeout( async() => {
-        await navigate('/');
+        await navigate('/*');
       }, 2000)
       
     } catch (error) {
