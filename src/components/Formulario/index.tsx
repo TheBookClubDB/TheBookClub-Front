@@ -1,7 +1,7 @@
 import { Alert, Box, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DateField } from '@mui/x-date-pickers/DateField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
@@ -24,6 +24,10 @@ const FormularioCadastroAutor = () => {
   const handleCloseAlert = () => {
     setOpenAlert(false)
   }
+
+  const validDate = dayjs().subtract(18, 'year');
+
+  const ALPHABET_REGEX = /^[^a-zA-Z]+$/;
 
   const botaoCancelar = async() => {
     navigate('/*')
@@ -81,12 +85,17 @@ const FormularioCadastroAutor = () => {
     let nomeInvalido: boolean = false;
     let dataInvalida: boolean = false;
 
-    if (nome === '') {
+    if (nome === '' || nome.length < 2) {
       setErroNome(true);
       nomeInvalido = true;
     }
 
     if (!dayjs(dataNascimento).isValid()) {
+      setErroData(true);
+      dataInvalida = true;
+    }
+
+    if (dataNascimento && dataNascimento > validDate) {
       setErroData(true);
       dataInvalida = true;
     }
@@ -107,28 +116,39 @@ const FormularioCadastroAutor = () => {
             label="Nome"
             type='text'
             placeholder='Digite o nome da pessoa autora'
+            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+              if (ALPHABET_REGEX.test(event.key) && event.key !== ' ') {
+                event.preventDefault()
+              }
+            }}
             slotProps={{
-              htmlInput: {maxLength: 70},
+              htmlInput: {
+                maxLength: 70}
             }}
             onChange={(e) => {
+              setErroNome(false)
               setNome(e.target.value)
             }}
           />
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateField className={style.dataFieldData}
-              required
+            <DatePicker className={style.dataFieldData}
               aria-label='campo-para-digitar-a-data'
-              helperText={erroData ? 'Campo obrigatorio.' : ''}
+              slotProps={{
+                textField: {
+                  helperText: 
+                    erroData ? 'Campo obrigatorio.' : '', 
+                  size: 'medium',
+                  error: erroData
+                }
+              }}
+              maxDate={validDate}
               label="Data de nascimento"
               value={dataNascimento}
               format="DD-MM-YYYY"
-              onChange={(newValue) => setDataDeNascimento(newValue)}
-              slotProps={{
-                textField: {
-                  size: 'medium',
-                  error: erroData
-                },
+              onChange={(newValue) => {
+                setErroData(false)
+                setDataDeNascimento(newValue)
               }}
             />
           </LocalizationProvider>
