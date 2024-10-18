@@ -84,7 +84,7 @@ const FormularioCadastroAutor = () => {
     let nomeInvalido: boolean = false;
     let dataInvalida: boolean = false;
 
-    if (nome === '') {
+    if (nome === '' || nome.length < 2) {
       setErroNome(true);
       nomeInvalido = true;
     }
@@ -102,6 +102,8 @@ const FormularioCadastroAutor = () => {
     return nomeInvalido || dataInvalida;
   }
 
+  const ALPHABET_REGEX = /^[^a-zA-Z]+$/;
+
   return (
     <>
       <Box aria-label='form' component="form" className={style.box}>
@@ -115,8 +117,14 @@ const FormularioCadastroAutor = () => {
             label="Nome"
             type='text'
             placeholder='Digite o nome da pessoa autora'
+            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+              if (ALPHABET_REGEX.test(event.key)) {
+                event.preventDefault()
+              }
+            }}
             slotProps={{
-              htmlInput: {maxLength: 70},
+              htmlInput: {
+                maxLength: 70}
             }}
             onChange={(e) => {
               setErroNome(false)
