@@ -94,7 +94,7 @@ const FormularioCadastroAutor = () => {
       dataInvalida = true;
     }
 
-    if (dataNascimento && dataNascimento > currentDate) {
+    if (dataNascimento && dataNascimento > currentDate.subtract(18, 'year')) {
       setErroData(true);
       dataInvalida = true;
     }
@@ -118,7 +118,7 @@ const FormularioCadastroAutor = () => {
             type='text'
             placeholder='Digite o nome da pessoa autora'
             onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-              if (ALPHABET_REGEX.test(event.key)) {
+              if (ALPHABET_REGEX.test(event.key) && event.key !== " ") {
                 event.preventDefault()
               }
             }}
