@@ -118,7 +118,7 @@ const FormularioCadastroAutor = () => {
             type='text'
             placeholder='Digite o nome da pessoa autora'
             onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-              if (ALPHABET_REGEX.test(event.key) && event.key !== " ") {
+              if (ALPHABET_REGEX.test(event.key) && event.key !== ' ') {
                 event.preventDefault()
               }
             }}
@@ -139,8 +139,8 @@ const FormularioCadastroAutor = () => {
                 textField: {
                   helperText: 
                     erroData ? 'Campo obrigatorio.' : '', 
-                    size: 'medium',
-                    error: erroData
+                  size: 'medium',
+                  error: erroData
                 }
               }}
               maxDate={currentDate}
