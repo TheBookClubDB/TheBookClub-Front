@@ -25,7 +25,9 @@ const FormularioCadastroAutor = () => {
     setOpenAlert(false)
   }
 
-  const currentDate = dayjs();
+  const validDate = dayjs().subtract(18, 'year');
+
+  const ALPHABET_REGEX = /^[^a-zA-Z]+$/;
 
   const botaoCancelar = async() => {
     navigate('/*')
@@ -94,15 +96,13 @@ const FormularioCadastroAutor = () => {
       dataInvalida = true;
     }
 
-    if (dataNascimento && dataNascimento > currentDate.subtract(18, 'year')) {
+    if (dataNascimento && dataNascimento > validDate) {
       setErroData(true);
       dataInvalida = true;
     }
 
     return nomeInvalido || dataInvalida;
   }
-
-  const ALPHABET_REGEX = /^[^a-zA-Z]+$/;
 
   return (
     <>
@@ -143,7 +143,7 @@ const FormularioCadastroAutor = () => {
                   error: erroData
                 }
               }}
-              maxDate={currentDate}
+              maxDate={validDate}
               label="Data de nascimento"
               value={dataNascimento}
               format="DD-MM-YYYY"
