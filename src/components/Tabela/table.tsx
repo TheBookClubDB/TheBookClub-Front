@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './UserTable.css'; 
+import styles from './UserTable.module.css';
 
 interface User {
   id: number;
@@ -36,13 +36,13 @@ const Tabela: React.FC = () => {
   );
 
   return (
-    <div className="user-table-container">
-      <table className="user-table">
+    <div className={styles.userTableContainer}>
+      <table className={styles.userTable}>
         <thead>
           <tr>
-            <th className="sortable">Nome <span className="sort-icon">▾</span></th>
-            <th className="sortable">Data de Nascimento <span className="sort-icon">▴</span></th>
-            <th className="sortable">Gênero <span className="sort-icon">▾</span></th>
+            <th className={styles.sortable}>Nome <span className={styles.sortIcon}>▾</span></th>
+            <th className={styles.sortable}>Data de Nascimento <span className={styles.sortIcon}>▴</span></th>
+            <th className={styles.sortable}>Gênero <span className={styles.sortIcon}>▾</span></th>
             <th>Ação</th>
           </tr>
         </thead>
@@ -53,14 +53,14 @@ const Tabela: React.FC = () => {
               <td>{user.birthDate}</td>
               <td>{user.gender}</td>
               <td>
-                <span className="action-link" onClick={() => handleEdit(user.id)}>Editar</span>
-                <span className="action-link" onClick={() => handleDelete(user.id)}>Excluir</span>
+                <span className={styles.actionLink} onClick={() => handleEdit(user.id)}>Editar</span>
+                <span className={styles.actionLink} onClick={() => handleDelete(user.id)}>Excluir</span>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="pagination">
+      <div className={styles.pagination}>
         <button 
           disabled={currentPage === 1} 
           onClick={() => handlePageChange(currentPage - 1)}
@@ -80,3 +80,4 @@ const Tabela: React.FC = () => {
 };
 
 export default Tabela;
+
