@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import FormAutor from '../pages/FormAutor';
 import Sidebar from '../components/Sidebar';
 import NaoEncontrada from '../pages/NaoEncontrada';
+import Tabela from '../components/Tabela/table';
 
 
 function RoutesProvider(){
@@ -39,7 +40,7 @@ function RoutesProvider(){
   },
   {
     path:'/geren-autor',
-    element:<text>Gerenciar Autores</text>
+    element:<Tabela/>
   },
   {
     path:'/geren-locatario',
