@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styles from './UserTable.module.css';
+import Icon from '../../assets/_filter.png';
+import Symbol from '../../assets/_sorter.png'
+
 
 interface User {
   id: number;
@@ -40,9 +43,9 @@ const Tabela: React.FC = () => {
       <table className={styles.userTable}>
         <thead>
           <tr>
-            <th className={styles.sortable}>Nome <span className={styles.sortIcon}>▾</span></th>
-            <th className={styles.sortable}>Data de Nascimento <span className={styles.sortIcon}>▴</span></th>
-            <th className={styles.sortable}>Gênero <span className={styles.sortIcon}>▾</span></th>
+            <th className={styles.sortable}>Nome <span className={styles.sortIcon}><img src={Icon} role= 'Icone' alt= 'icon' /></span></th>
+            <th className={styles.sortable}>Data de Nascimento <span className={styles.sortIcon}><img src={Symbol} role= 'Icone' alt= 'icon'/></span></th>
+            <th className={styles.sortable}>Gênero <span className={styles.sortIcon}><img src={Icon} role= 'Icone' alt= 'icon' /></span></th>
             <th>Ação</th>
           </tr>
         </thead>

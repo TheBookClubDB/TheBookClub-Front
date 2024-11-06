@@ -1,29 +1,49 @@
-/* UserTable.module.css */
-
 .userTableContainer {
   margin: 20px;
   font-family: Arial, sans-serif;
+  width: 900px; 
+  height: 285px; 
+  overflow: auto; 
 }
 
 .userTable {
-  width: 100%;
+  width: 100%; 
   border-collapse: collapse;
+}
+
+img {
+  align-items: center;
 }
 
 .userTable th,
 .userTable td {
-  padding: 12px 15px;
+  padding: 12px 20px;
   text-align: left;
+  border: none;
+  color: #1f0021;
 }
 
 .userTable th {
   background-color: #f8eaf6;
   font-weight: normal;
-  color: #333;
+  color: #1f0021;
 }
 
-.userTable td {
-  border-bottom: 1px solid #ddd;
+
+.userTable th:first-child {
+  width: 50%; 
+}
+
+.userTable th:nth-child(2) {
+  width: 25%; 
+}
+
+.userTable th:nth-child(3) {
+  width: 15%; 
+}
+
+.userTable th:last-child {
+  width: 10%; 
 }
 
 .sortable {
@@ -34,11 +54,12 @@
 .sortIcon {
   font-size: 10px;
   margin-left: 5px;
-  color: #a056c5;
+  color: #850f8d;
+  vertical-align: middle;
 }
 
 .actionLink {
-  color: #a056c5;
+  color: #850f8d;
   cursor: pointer;
   margin-right: 10px;
   text-decoration: none;
@@ -71,7 +92,7 @@
 
 .pagination span {
   margin: 0 10px;
+  padding: 4px 10px;
   font-weight: bold;
+  border: 1px solid #ddd;
 }
-
-  
