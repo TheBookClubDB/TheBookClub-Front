@@ -29,7 +29,6 @@ img {
   color: #1f0021;
 }
 
-
 .userTable th:first-child {
   width: 50%; 
 }
@@ -69,30 +68,41 @@ img {
   text-decoration: underline;
 }
 
-.pagination {
+.paginationContainer {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
   align-items: center;
 }
 
-.pagination button {
-  background: none;
-  border: 1px solid #ddd;
+.paginationButton {
+  width: 35px;
+  background-color: #fff;
+  color: #850f8d; 
+  border: 1px solid #ddd; 
+  border-radius: 3px;
   padding: 5px 10px;
   cursor: pointer;
   margin: 0 2px;
   border-radius: 4px;
 }
 
-.pagination button:disabled {
+.paginationButton:disabled {
+  background-color: #fff; 
+  border-color: #ddd;
   cursor: not-allowed;
-  opacity: 0.5;
+  color: #ddd;
 }
 
-.pagination span {
+.paginationButton:hover:not(:disabled) { 
+  border-color: #6b0c6b;
+}
+
+.paginationContainer span {
   margin: 0 10px;
   padding: 4px 10px;
   font-weight: bold;
-  border: 1px solid #ddd;
+  border: 2px solid #850f8d;
+  border-radius: 3px;
+  color: #850f8d; 
 }
