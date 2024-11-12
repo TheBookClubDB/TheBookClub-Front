@@ -12,15 +12,15 @@ function RoutesProvider() {
     },
     {
       path: '/devolver',
-      element: <div>Devolver</div>, // substituído <text> por <div>
+      element: <div>Devolver</div>, 
     },
     {
       path: '/alugar',
-      element: <div>Alugar</div>, // substituído <text> por <div>
+      element: <div>Alugar</div>, 
     },
     {
       path: '/historico',
-      element: <div>Histórico</div>, // substituído <text> por <div>
+      element: <div>Histórico</div>, 
     },
     {
       path: '/adm',
@@ -32,11 +32,11 @@ function RoutesProvider() {
     },
     {
       path: '/criar-locatario',
-      element: <div>Criar Locatário</div>, // substituído <text> por <div>
+      element: <div>Criar Locatário</div>, 
     },
     {
       path: '/criar-livro',
-      element: <div>Criar Livro</div>, // substituído <text> por <div>
+      element: <div>Criar Livro</div>, 
     },
     {
       path: '/geren-autor',
@@ -44,11 +44,11 @@ function RoutesProvider() {
     },
     {
       path: '/geren-locatario',
-      element: <div>Gerenciar Locatários</div>, // substituído <text> por <div>
+      element: <div>Gerenciar Locatários</div>, 
     },
     {
       path: '/geren-livro',
-      element: <div>Gerenciar Livros</div>, // substituído <text> por <div>
+      element: <div>Gerenciar Livros</div>, 
     },
     {
       path: '*',
